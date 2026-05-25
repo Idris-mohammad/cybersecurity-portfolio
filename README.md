@@ -4,7 +4,7 @@ A stunning, production-ready, ultra-modern portfolio website built for a Compute
 
 This repository hosts a single-page scrolling interface structured like a sleek, sophisticated Security Operations dashboard. It is designed to be fully responsive, lightweight, and optimized for instant hosting on GitHub Pages or Vercel.
 
-Live Demo Link: `https://<YOUR-USERNAME>.github.io/<YOUR-REPO-NAME>/` *(or your Vercel link)*
+Live Demo Link: `https://cybersecurity-portfolio-sepia-alpha.vercel.app/` 
 
 ---
 
