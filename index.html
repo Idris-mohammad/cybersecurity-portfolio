@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idris Chennari | Cybersecurity & SecOps Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        :root {
+            --accent-rgb: 0, 255, 102; /* Neon Green */
+            --accent-hex: #00FF66;
+            --glow-color: rgba(0, 255, 102, 0.15);
+        }
+        .theme-blue {
+            --accent-rgb: 0, 229, 255; /* Electric Cyan */
+            --accent-hex: #00E5FF;
+            --glow-color: rgba(0, 229, 255, 0.15);
+        }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #05070c;
+        }
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .cyber-grid {
+            background-image: linear-gradient(rgba(255,255,255,0.01) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255,255,255,0.01) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .glow-border {
+            border: 1px solid rgba(var(--accent-rgb), 0.2);
+            box-shadow: 0 0 15px var(--glow-color);
+        }
+        .glow-border:hover {
+            border: 1px solid rgba(var(--accent-rgb), 0.5);
+            box-shadow: 0 0 25px rgba(var(--accent-rgb), 0.3);
+        }
+        .text-glow {
+            text-shadow: 0 0 10px rgba(var(--accent-rgb), 0.6);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #05070c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(var(--accent-rgb), 0.3);
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(var(--accent-rgb), 0.6);
+        }
+        #matrixCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.04;
+            pointer-events: none;
+            transition: all 0.5s ease;
+        }
+    </style>
+</head>
+<body class="text-slate-300 min-h-screen relative overflow-x-hidden cyber-grid">
+
+    <canvas id="matrixCanvas"></canvas>
+
+    <header class="sticky top-0 z-50 backdrop-blur-md border-b border-slate-800/80 bg-slate-950/70 px-4 lg:px-8 py-4 transition-all">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-3 h-3 rounded-full bg-[rgb(var(--accent-rgb))] text-glow animate-pulse"></div>
+                <span class="mono tracking-widest text-white font-bold text-sm lg:text-base uppercase">IDRIS_SEC //</span>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8 mono text-xs uppercase tracking-wider">
+                <a href="#hero" class="text-slate-400 hover:text-[rgb(var(--accent-rgb))] transition-colors">Console</a>
+                <a href="#skills" class="text-slate-400 hover:text-[rgb(var(--accent-rgb))] transition-colors">Threat Matrix</a>
+                <a href="#experience" class="text-slate-400 hover:text-[rgb(var(--accent-rgb))] transition-colors">Mission Logs</a>
+                <a href="#certifications" class="text-slate-400 hover:text-[rgb(var(--accent-rgb))] transition-colors">Credentials</a>
+                <a href="#contact" class="text-slate-400 hover:text-[rgb(var(--accent-rgb))] transition-colors">Secure Uplink</a>
+            </nav>
+
+            <div class="flex items-center space-x-4">
+                <button id="themeToggle" class="p-2 rounded border border-slate-800 bg-slate-900/50 hover:border-[rgb(var(--accent-rgb))] transition-all group" title="Toggle UI Aesthetic">
+                    <i data-lucide="shield-alert" class="w-4 h-4 text-[rgb(var(--accent-rgb))] group-hover:rotate-180 transition-transform duration-500"></i>
+                </button>
+                <a href="#contact" class="hidden sm:inline-block mono text-xs border border-[rgb(var(--accent-rgb))] px-4 py-2 text-[rgb(var(--accent-rgb))] hover:bg-[rgb(var(--accent-rgb))]/10 transition-all rounded text-glow">
+                    ESTABLISH CONNECTION
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 lg:px-8 py-12 space-y-32">
+
+        <section id="hero" class="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-6 items-center min-h-[80vh]">
+            <div class="lg:col-span-7 space-y-6">
+                <div class="mono text-xs uppercase tracking-widest text-[rgb(var(--accent-rgb))] font-semibold">
+                    [+] SYSTEM STATUS: OPERATIONAL // SEC_OPS_INIT
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">
+                    Hi, I'm <span class="text-[rgb(var(--accent-rgb))] text-glow">Idris Chennari</span><br>
+                    Cybersecurity Practitioner.
+                </h1>
+                
+                <div class="w-full bg-slate-950/90 border border-slate-800 rounded-lg p-4 mono text-sm shadow-2xl relative overflow-hidden backdrop-blur-md">
+                    <div class="flex items-center space-x-2 pb-3 border-b border-slate-900 mb-3">
+                        <div class="w-3 h-3 rounded-full bg-red-500/70"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500/70"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500/70"></div>
+                        <span class="text-xs text-slate-500 ml-2">bash - idris@security-ops:~</span>
+                    </div>
+                    <div class="space-y-2 min-h-[160px]">
+                        <p class="text-slate-500">$ cat profile.json</p>
+                        <div id="terminal-text" class="text-slate-300 leading-relaxed"></div>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="#experience" class="bg-[rgb(var(--accent-rgb))]/10 border border-[rgb(var(--accent-rgb))] text-[rgb(var(--accent-rgb))] px-6 py-3 rounded font-medium hover:bg-[rgb(var(--accent-rgb))]/20 transition-all text-glow tracking-wide mono text-sm">
+                        VIEW MISSION LOGS
+                    </a>
+                    <a href="mailto:idriscmd2005@gmail.com" class="bg-slate-900 border border-slate-800 text-slate-300 px-6 py-3 rounded font-medium hover:bg-slate-800 hover:text-white transition-all tracking-wide mono text-sm">
+                        REQUEST CV / ACCESS
+                    </a>
+                </div>
+            </div>
+
+            <div class="lg:col-span-5">
+                <div class="bg-slate-950/40 border border-slate-800/80 rounded-xl p-6 relative backdrop-blur-sm space-y-6 overflow-hidden">
+                    <div class="absolute top-0 right-0 w-24 h-24 border-r border-t border-slate-800 pointer-events-none"></div>
+                    <div class="absolute bottom-0 left-0 w-24 h-24 border-l border-b border-slate-800 pointer-events-none"></div>
+                    
+                    <div class="flex justify-between items-center border-b border-slate-900 pb-4">
+                        <span class="mono text-xs text-slate-400 uppercase tracking-widest">[ TARGET ANALYTICS ]</span>
+                        <span class="text-[rgb(var(--accent-rgb))] text-xs mono px-2 py-0.5 bg-[rgb(var(--accent-rgb))]/10 rounded">SOC // CLOUD</span>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="p-3 bg-slate-900/40 border border-slate-900 rounded flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <i data-lucide="shield" class="w-5 h-5 text-[rgb(var(--accent-rgb))]"></i>
+                                <div>
+                                    <p class="text-white text-sm font-medium">Vulnerability Management</p>
+                                    <p class="text-xs text-slate-500">Nmap, Nessus, OpenVAS</p>
+                                </div>
+                            </div>
+                            <span class="mono text-xs text-[rgb(var(--accent-rgb))]">90%</span>
+                        </div>
+
+                        <div class="p-3 bg-slate-900/40 border border-slate-900 rounded flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <i data-lucide="terminal" class="w-5 h-5 text-[rgb(var(--accent-rgb))]"></i>
+                                <div>
+                                    <p class="text-white text-sm font-medium">Systems & Scripting</p>
+                                    <p class="text-xs text-slate-500">Linux Administration, Python, Bash</p>
+                                </div>
+                            </div>
+                            <span class="mono text-xs text-[rgb(var(--accent-rgb))]">85%</span>
+                        </div>
+
+                        <div class="p-3 bg-slate-900/40 border border-slate-900 rounded flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <i data-lucide="activity" class="w-5 h-5 text-[rgb(var(--accent-rgb))]"></i>
+                                <div>
+                                    <p class="text-white text-sm font-medium">Traffic & Log Analysis</p>
+                                    <p class="text-xs text-slate-500">Wireshark, Triage, Log Processing</p>
+                                </div>
+                            </div>
+                            <span class="mono text-xs text-[rgb(var(--accent-rgb))]">80%</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-2 flex justify-between text-center border-t border-slate-900">
+                        <div>
+                            <p class="text-2xl font-bold text-white mono">2</p>
+                            <p class="text-[10px] text-slate-500 uppercase tracking-wider">Industry Internships</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-bold text-white mono">7.91</p>
+                            <p class="text-[10px] text-slate-500 uppercase tracking-wider">BTech Cumulative GPA</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-bold text-white mono">A++</p>
+                            <p class="text-[10px] text-slate-500 uppercase tracking-wider">Clearance / Status</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="skills" class="space-y-8 scroll-mt-24">
+            <div class="border-l-2 border-[rgb(var(--accent-rgb))] pl-4">
+                <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white uppercase tracking-wide">Threat Capabilities Matrix</h2>
+                <p class="text-sm text-slate-400 mt-1 mono">Core competencies classified across defensive security architectural vectors.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-slate-950/50 border border-slate-800/80 rounded-xl p-5 glow-border transition-all flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="p-3 bg-slate-900 rounded-lg w-fit text-[rgb(var(--accent-rgb))]">
+                            <i data-lucide="shield-check" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Security Operations</h3>
+                        <p class="text-slate-400 text-sm">Active threat triage, network monitoring, and system log analysis for Indicators of Compromise (IoCs).</p>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5 pt-4">
+                        <span class="text-[11px] bg-slate-900 text-slate-300 border border-slate-800 px-2 py-0.5 rounded mono">Wireshark</span>
+                        <span class="text-[11px] bg-slate-900 text-slate-300 border border-slate-800 px-2 py-0.5 rounded mono">Log Triage</span>
+                        <span class="text-[11px] bg-slate-900 text-slate-300 border border-slate-800 px-2 py-0.5 rounded mono">TCP/IP Stack</span>
+                    </div>
+                </div>
+
+                <div class="bg-slate-950/50 border border-slate-800/80 rounded-xl p-5 glow-border transition-all flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="p-3 bg-slate-900 rounded-lg w-fit text-[rgb(var(--accent-rgb))]">
+                            <i data-lucide="radar" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Vulnerability Management</h3>
+                        <p class="text-slate-400 text-sm">Reconnaissance mapping, web application security auditing, and identifying flaws like SQLi & XSS.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5 pt-4">
+                        <span class="text-[11px] bg-slate-900 text-slate-300 border border-slate-800 px-2 py-0.5 rounded mono">Nmap</span>
+                        <span class="text-[11px] bg-slate-900 text-slate-300 border border-slate-800 px-2 py-0.5 rounded mono">Burp Suite</span>
+                        <span class="text-[11px] bg-slate-900 text-slate-300 border border-slate-800 px-2 py-0.5 rounded mono">Nessus</span>
+                        <span class="text-[11px] bg-slate-900 text-slate-300 border border-slate-800 px-2 py-0.5 rounded mono">OpenVAS</span>
+                    </div>
+                </div>
+
+                <div class="bg-slate-950/50 border border-slate-800/80 rounded-xl p-5 glow-border transition-all flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="p-3 bg-slate-900 rounded-lg w-fit text-[rgb(var(--accent-rgb))]">
+                            <i data-lucide="cpu" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Systems & Dev</h3>
+                        <p class="text-slate-400 text-sm">Hardening host systems, writing robust custom detection tooling, automated script parsing, and version control.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5 pt-4">
+                        <span class="text-[11px] bg-slate-900 text-slate-300 border border-slate-800 px-2 py-0.5 rounded mono">Python</span>
+                        <span class="text-[11px] bg-slate-900 text-slate-300 border border-slate-800 px-2 py-0.5 rounded mono">Linux Admin</span>
+                        <span class="text-[11px] bg-slate-900 text-slate-300 border border-slate-800 px-2 py-0.5 rounded mono">Bash</span>
+                        <span class="text-[11px] bg-slate-900 text-slate-300 border border-slate-800 px-2 py-0.5 rounded mono">Git/GitHub</span>
+                    </div>
+                </div>
+
+                <div class="bg-slate-950/50 border border-slate-800/80 rounded-xl p-5 glow-border transition-all flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="p-3 bg-slate-900 rounded-lg w-fit text-[rgb(var(--accent-rgb))]">
+                            <i data-lucide="brain-circuit" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">AI-Driven Security</h3>
+                        <p class="text-slate-400 text-sm">Engineering predictive models, processing raw telemetry data, and building dashboards for anomaly detection validation.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5 pt-4">
+                        <span class="text-[11px] bg-slate-900 text-slate-300 border border-slate-800 px-2 py-0.5 rounded mono">Scikit-Learn</span>
+                        <span class="text-[11px] bg-slate-900 text-slate-300 border border-slate-800 px-2 py-0.5 rounded mono">Pandas/NumPy</span>
+                        <span class="text-[11px] bg-slate-900 text-slate-300 border border-slate-800 px-2 py-0.5 rounded mono">Streamlit</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="experience" class="space-y-12 scroll-mt-24">
+            <div class="border-l-2 border-[rgb(var(--accent-rgb))] pl-4">
+                <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white uppercase tracking-wide">Mission Audit Logs</h2>
+                <p class="text-sm text-slate-400 mt-1 mono">Detailed timeline mapping formal industry experience and operational projects.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <div class="lg:col-span-7 space-y-8 relative before:absolute before:top-2 before:bottom-2 before:left-[19px] before:w-0.5 before:bg-slate-900">
+                    
+                    <div class="relative pl-12 group">
+                        <div class="absolute left-0 top-1 w-10 h-10 bg-slate-950 border border-slate-800 rounded-full flex items-center justify-center text-[rgb(var(--accent-rgb))] group-hover:border-[rgb(var(--accent-rgb))] transition-colors z-10">
+                            <i data-lucide="binary" class="w-4 h-4"></i>
+                        </div>
+                        <div class="space-y-2">
+                            <span class="mono text-xs text-[rgb(var(--accent-rgb))] font-semibold">FEB 2026 — APR 2026</span>
+                            <h3 class="text-xl font-bold text-white">Cybersecurity Intern</h3>
+                            <h4 class="text-sm text-slate-400 font-medium">ApexPlanet Software Pvt Ltd · Remote</h4>
+                            <ul class="text-sm text-slate-400 space-y-2 pt-2 list-disc list-outside pl-4">
+                                <li>Conducted active network scanning and reconnaissance using Nmap to target open ports and operational system vulnerabilities.</li>
+                                <li>Audited web applications using Burp Suite to capture, manipulate, and eliminate critical vulnerabilities including SQLi and XSS.</li>
+                                <li>Monitored continuous live network traffic via Wireshark to ensure absolute standard TCP/IP protocol stack integrity.</li>
+                                <li>Authored a structured Incident Response Report as part of a deep-dive Capstone breach simulation.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="relative pl-12 group">
+                        <div class="absolute left-0 top-1 w-10 h-10 bg-slate-950 border border-slate-800 rounded-full flex items-center justify-center text-[rgb(var(--accent-rgb))] group-hover:border-[rgb(var(--accent-rgb))] transition-colors z-10">
+                            <i data-lucide="eye" class="w-4 h-4"></i>
+                        </div>
+                        <div class="space-y-2">
+                            <span class="mono text-xs text-[rgb(var(--accent-rgb))] font-semibold">NOV 2025 — MAR 2026</span>
+                            <h3 class="text-xl font-bold text-white">Cybersecurity Analyst Intern</h3>
+                            <h4 class="text-sm text-slate-400 font-medium">Shamgar Software Solutions · Remote</h4>
+                            <ul class="text-sm text-slate-400 space-y-2 pt-2 list-disc list-outside pl-4">
+                                <li>Analyzed raw system logs to detect Indicators of Compromise (IoCs) and filter malicious deviations from normal network workflows.</li>
+                                <li>Partnered actively across cross-functional infrastructure units to refine operational detection pipelines.</li>
+                                <li>Boosted system technical documentation correctness metrics and reaction readiness matrices by 15%.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 space-y-6">
+                    <h3 class="mono text-xs uppercase text-slate-400 tracking-wider mb-2 flex items-center">
+                        <i data-lucide="git-branch" class="w-4 h-4 mr-2 text-[rgb(var(--accent-rgb))]"></i> SpecOps Code Implementations
+                    </h3>
+
+                    <div class="p-5 bg-slate-950/40 border border-slate-800/80 rounded-xl space-y-4 backdrop-blur-sm relative group hover:border-[rgb(var(--accent-rgb))]/30 transition-all">
+                        <div class="flex justify-between items-start">
+                            <h4 class="text-base font-bold text-white group-hover:text-[rgb(var(--accent-rgb))] transition-colors">AI-Driven Threat Detection System</h4>
+                            <a href="https://github.com/Idris-mohammad/" target="_blank" class="text-slate-500 hover:text-white transition-colors">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Engineered an ML pipeline inside Kali Linux using Python to ingest raw <span class="mono text-slate-300 text-[11px]">journalctl</span> system logs. Built a real-time Streamlit monitoring panel that isolates anomalous outliers, significantly cutting down on manual log auditing requirements.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 pt-2">
+                            <span class="text-[10px] bg-slate-900 border border-slate-800 px-2 py-0.5 rounded mono text-slate-400">Python</span>
+                            <span class="text-[10px] bg-slate-900 border border-slate-800 px-2 py-0.5 rounded mono text-slate-400">Kali Linux</span>
+                            <span class="text-[10px] bg-slate-900 border border-slate-800 px-2 py-0.5 rounded mono text-slate-400">Streamlit</span>
+                        </div>
+                    </div>
+
+                    <div class="p-5 bg-slate-950/40 border border-slate-800/80 rounded-xl space-y-4 backdrop-blur-sm relative group hover:border-[rgb(var(--accent-rgb))]/30 transition-all">
+                        <div class="flex justify-between items-start">
+                            <h4 class="text-base font-bold text-white group-hover:text-[rgb(var(--accent-rgb))] transition-colors">Predictive Food Price Analysis</h4>
+                            <a href="https://github.com/Idris-mohammad/" target="_blank" class="text-slate-500 hover:text-white transition-colors">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Constructed a Python machine learning analytical stack mapping historical agricultural market vectors. Trained Linear Regression components over structural parameters including market inflation patterns and supply chain friction factors to present clean charting visualizations.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 pt-2">
+                            <span class="text-[10px] bg-slate-900 border border-slate-800 px-2 py-0.5 rounded mono text-slate-400">Pandas</span>
+                            <span class="text-[10px] bg-slate-900 border border-slate-800 px-2 py-0.5 rounded mono text-slate-400">Scikit-Learn</span>
+                            <span class="text-[10px] bg-slate-900 border border-slate-800 px-2 py-0.5 rounded mono text-slate-400">SQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="certifications" class="space-y-8 scroll-mt-24">
+            <div class="border-l-2 border-[rgb(var(--accent-rgb))] pl-4">
+                <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white uppercase tracking-wide">Validated Access Credentials</h2>
+                <p class="text-sm text-slate-400 mt-1 mono">Verified global industry security certs and operational environment testing badges.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="p-5 bg-slate-950/40 border border-slate-800/80 rounded-xl flex items-start space-x-4 relative overflow-hidden backdrop-blur-sm">
+                    <div class="p-3 bg-slate-900 rounded-lg text-[rgb(var(--accent-rgb))] shrink-0">
+                        <i data-lucide="award" class="w-6 h-6"></i>
+                    </div>
+                    <div class="space-y-1">
+                        <span class="mono text-[10px] text-[rgb(var(--accent-rgb))] uppercase tracking-widest font-semibold">[ VERIFIED BADGE ]</span>
+                        <h3 class="text-lg font-bold text-white">Google Cybersecurity Professional Certificate</h3>
+                        <p class="text-xs text-slate-400">Comprehensive foundation covering incident response models, network routing structures, Linux file systems hardening, packet inspection workflows, and Python scripting mechanisms.</p>
+                        <p class="text-xs text-slate-500 pt-1 mono">Issued: Jan 2026</p>
+                    </div>
+                </div>
+
+                <div class="p-5 bg-slate-950/40 border border-slate-800/80 rounded-xl flex items-start space-x-4 relative overflow-hidden backdrop-blur-sm">
+                    <div class="p-3 bg-slate-900 rounded-lg text-[rgb(var(--accent-rgb))] shrink-0">
+                        <i data-lucide="layers" class="w-6 h-6"></i>
+                    </div>
+                    <div class="space-y-1">
+                        <span class="mono text-[10px] text-[rgb(var(--accent-rgb))] uppercase tracking-widest font-semibold">[ SIMULATION ARCHIVE ]</span>
+                        <h3 class="text-lg font-bold text-white">Cybersecurity Simulation Architecture</h3>
+                        <p class="text-xs text-slate-400">Deloitte Australia (via Forage). Focused on practical corporate risk mitigation modeling, analyzing architecture blueprints for adversarial vectors, and outlining formal executive technical risk reports.</p>
+                        <p class="text-xs text-slate-500 pt-1 mono">Issued: Oct 2025</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="contact" class="space-y-8 max-w-3xl mx-auto scroll-mt-24">
+            <div class="text-center space-y-2">
+                <div class="mono text-xs uppercase tracking-widest text-[rgb(var(--accent-rgb))] font-semibold">
+                    // COMMUNICATE VIA ENCRYPTED ROUTE
+                </div>
+                <h2 class="text-3xl font-bold tracking-tight text-white uppercase">Initialize Secure Uplink</h2>
+                <p class="text-sm text-slate-400 max-w-md mx-auto">
+                    Looking to add an agile SecOps practitioner or cloud infrastructure protector to your team? Open a transmission pipe below.
+                </p>
+            </div>
+
+            <div class="bg-slate-950/60 border border-slate-800 rounded-xl p-6 md:p-8 backdrop-blur-md relative">
+                <form action="https://formspree.io/f/your-id" method="POST" class="space-y-5">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="space-y-2">
+                            <label class="mono text-xs uppercase tracking-wider text-slate-400">Operator Designation</label>
+                            <input type="text" name="name" required placeholder="Full Name" class="w-full bg-slate-900 border border-slate-800 rounded px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[rgb(var(--accent-rgb))] transition-colors">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="mono text-xs uppercase tracking-wider text-slate-400">Return Network Address</label>
+                            <input type="email" name="email" required placeholder="email@domain.com" class="w-full bg-slate-900 border border-slate-800 rounded px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[rgb(var(--accent-rgb))] transition-colors">
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="mono text-xs uppercase tracking-wider text-slate-400">Transmission Payload</label>
+                        <textarea name="message" rows="4" required placeholder="Type operational brief or query details here..." class="w-full bg-slate-900 border border-slate-800 rounded px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[rgb(var(--accent-rgb))] transition-colors resize-none"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-[rgb(var(--accent-rgb))]/10 border border-[rgb(var(--accent-rgb))] text-[rgb(var(--accent-rgb))] py-3 rounded font-medium hover:bg-[rgb(var(--accent-rgb))]/20 transition-all text-glow tracking-wider mono text-sm uppercase">
+                        TRANSMIT SECURE DATA PACKET
+                    </button>
+                </form>
+
+                <div class="mt-8 pt-6 border-t border-slate-900 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center text-xs mono text-slate-400">
+                    <a href="mailto:idriscmd2005@gmail.com" class="flex items-center justify-center space-x-2 hover:text-[rgb(var(--accent-rgb))] transition-colors">
+                        <i data-lucide="mail" class="w-4 h-4"></i>
+                        <span>idriscmd2005@gmail.com</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/idris-chennari-a99875297" target="_blank" class="flex items-center justify-center space-x-2 hover:text-[rgb(var(--accent-rgb))] transition-colors">
+                        <i data-lucide="linkedin" class="w-4 h-4"></i>
+                        <span>Linkedin Profile</span>
+                    </a>
+                    <a href="https://github.com/Idris-mohammad/" target="_blank" class="flex items-center justify-center space-x-2 hover:text-[rgb(var(--accent-rgb))] transition-colors">
+                        <i data-lucide="github" class="w-4 h-4"></i>
+                        <span>GitHub Repos</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-slate-900 py-8 px-4 text-center text-xs mono text-slate-600 mt-20 bg-slate-950/30">
+        <p>© 2026 CHENNARI MOHAMMED IDRIS. ALL RIGHTS RESERVED // SECURITY METRICS EXCELLENT.</p>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // 1. Theme Switching Logic
+        const themeToggle = document.getElementById('themeToggle');
+        const bodyElement = document.body;
+        
+        themeToggle.addEventListener('click', () => {
+            bodyElement.classList.toggle('theme-blue');
+            // Refresh matrix rain drawing color based on the current active theme accent
+            initMatrixColor();
+        });
+
+        // 2. Simulated Terminal Typing Script
+        const terminalText = document.getElementById('terminal-text');
+        const bioData = `{
+  "identity": "CHENNARI MOHAMMED IDRIS",
+  "education": "B.Tech CSE @ AAR Mahaveer College",
+  "specialization": ["SOC Analysis", "Cloud Sec Ops"],
+  "core_competencies": ["Linux Admin", "Log Triage", "Python"],
+  "focus": "Automating anomaly classification frameworks via AI",
+  "status": "Ready for deployment into tactical security operations"
+}`;
+
+        let charIndex = 0;
+        function typeTerminal() {
+            if (charIndex < bioData.length) {
+                // Formatting clean line breaks natively for json representation
+                if(bioData.charAt(charIndex) === '\n') {
+                    terminalText.innerHTML += '<br>';
+                } else if(bioData.charAt(charIndex) === ' ') {
+                    terminalText.innerHTML += '&nbsp;';
+                } else {
+                    terminalText.innerHTML += bioData.charAt(charIndex);
+                }
+                charIndex++;
+                setTimeout(typeTerminal, 15);
+            }
+        }
+        // Start typing after a short delay
+        setTimeout(typeTerminal, 600);
+
+
+        // 3. Matrix Rain Background Effect
+        const canvas = document.getElementById('matrixCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        const katakana = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*+-=';
+        const alphabet = katakana.split('');
+
+        const fontSize = 16;
+        let columns = canvas.width / fontSize;
+
+        let rainDrops = [];
+        for (let x = 0; x < columns; x++) {
+            rainDrops[x] = 1;
+        }
+
+        let matrixColor = '#00FF66';
+        function initMatrixColor() {
+            matrixColor = bodyElement.classList.contains('theme-blue') ? '#00E5FF' : '#00FF66';
+        }
+        initMatrixColor();
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(5, 7, 12, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = matrixColor;
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < rainDrops.length; i++) {
+                const text = alphabet[Math.floor(Math.random() * alphabet.length)];
+                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+
+                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    rainDrops[i] = 0;
+                }
+                rainDrops[i]++;
+            }
+        }
+        setInterval(drawMatrix, 30);
+    </script>
+</body>
+</html>
